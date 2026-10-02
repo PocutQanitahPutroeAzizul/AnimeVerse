@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 class FavoriteAnimeCard extends StatelessWidget {
   final String title;
   final String genre;
   final String rating;
   final String imagePath;
+
   const FavoriteAnimeCard({
     super.key,
     required this.title,
@@ -11,10 +13,12 @@ class FavoriteAnimeCard extends StatelessWidget {
     required this.rating,
     required this.imagePath,
   });
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+
     return Card(
       margin: EdgeInsets.symmetric(
         horizontal: screenWidth * 0.04,
@@ -26,7 +30,7 @@ class FavoriteAnimeCard extends StatelessWidget {
       color: const Color(0xFF0b395e),
       elevation: 5,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(screenWidth * 0.025),
         child: Row(
           children: [
             ClipRRect(
@@ -45,25 +49,35 @@ class FavoriteAnimeCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(fontSize: screenWidth * 0.045,
-                        fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.045,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(height: screenHeight * 0.005),
                   Text(
                     genre,
-                    style: TextStyle(fontSize: screenWidth * 0.035,
-                        color: Colors.grey),
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.035,
+                      color: Colors.grey,
+                    ),
                   ),
                   SizedBox(height: screenHeight * 0.01),
                   Row(
                     children: [
-                      Icon(Icons.star, color: Colors.amber, size:
-                      screenWidth * 0.04),
+                      Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                        size: screenWidth * 0.04,
+                      ),
                       SizedBox(width: screenWidth * 0.01),
                       Text(
                         rating,
-                        style: TextStyle(fontSize: screenWidth * 0.035,
-                            color: Colors.white),
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.035,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),

@@ -16,20 +16,22 @@ class AnimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final cardWidth = constraints.maxWidth;
+
         return SizedBox(
           width: cardWidth,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            // Image section
+              // Image section - takes most of the space
+              // Image section - takes most of the space
               Expanded(
                 flex: 8,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(screenWidth *
-                      0.03),
+                  borderRadius: BorderRadius.circular(screenWidth * 0.03),
                   child: Image.asset(
                     imagePath,
                     fit: BoxFit.cover,
@@ -38,7 +40,9 @@ class AnimeCard extends StatelessWidget {
                   ),
                 ),
               ),
-              // Title section
+
+              // Title section - compact but readable
+              // Title section - compact but readable
               Expanded(
                 flex: 2,
                 child: Container(

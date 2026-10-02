@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iklc_anime_verse/widgets/genre_list.dart';
+
 import '../widgets/anime_view.dart';
 import '../widgets/app_scaffold.dart';
+import '../widgets/genre_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,10 +11,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+
     return AppScaffold(
       appBar: AppBar(
         title: Text(
-          "AnimeVerse",
+          'AnimeVerse',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w800,
@@ -28,13 +30,11 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-          // Search Bar — ditambahkan di bawah ini
             Padding(
               padding: EdgeInsets.all(screenWidth * 0.04),
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(screenWidth *
-                      0.075),
+                  borderRadius: BorderRadius.circular(screenWidth * 0.075),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.3),
@@ -45,25 +45,27 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: "Anime Title",
-                    hintStyle: TextStyle(color: Colors.grey, fontSize:
-                    screenWidth * 0.04),
-                    prefixIcon: Icon(Icons.search, color: Colors.grey,
-                        size: screenWidth * 0.06),
+                    hintText: 'Anime Title',
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: screenWidth * 0.04,
+                    ),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                      size: screenWidth * 0.06,
+                    ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(screenWidth *
-                          0.075),
+                      borderRadius: BorderRadius.circular(screenWidth * 0.075),
                       borderSide: BorderSide.none,
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(screenWidth *
-                          0.075),
+                      borderRadius: BorderRadius.circular(screenWidth * 0.075),
                       borderSide: BorderSide.none,
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(screenWidth *
-                          0.075),
-                      borderSide: const BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(screenWidth * 0.075),
+                      borderSide: BorderSide(color: Colors.white),
                     ),
                     filled: true,
                     fillColor: const Color(0xFF0b395e),
@@ -72,12 +74,14 @@ class HomeScreen extends StatelessWidget {
                       vertical: screenHeight * 0.015,
                     ),
                   ),
-                  style: TextStyle(fontSize: screenWidth * 0.04, color:
-                  Colors.white),
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.04,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
-            const GenreList(),
+            GenreList(),
             SizedBox(height: screenHeight * 0.03),
             const AnimeView(),
             SizedBox(height: screenHeight * 0.025),

@@ -6,6 +6,7 @@ class Anime {
   final String rating;
   final String totalEpisodes;
   final String description;
+
   const Anime({
     required this.id,
     required this.title,

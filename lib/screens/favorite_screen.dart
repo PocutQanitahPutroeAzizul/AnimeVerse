@@ -1,5 +1,6 @@
+import 'package:anime/data/dummy_data.dart';
 import 'package:flutter/material.dart';
-import '../data/dummy_data.dart';
+
 import '../widgets/app_scaffold.dart';
 import '../widgets/favorite_anime_card.dart';
 
@@ -11,13 +12,10 @@ class FavoriteScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    // Get one anime from dummy data for display
-    final favoriteAnime = DummyData.animeList.first;
-
     return AppScaffold(
       appBar: AppBar(
         title: Text(
-          "Favorite Anime",
+          'Favorite Anime',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w800,
@@ -28,29 +26,18 @@ class FavoriteScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          // Search Bar bisa dipakai ulang dari HomeScreen (opsional, sesuai selera)
-          SizedBox(height: screenHeight * 0.01),
-
-          // Favorite Anime List
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(
-                vertical: screenHeight * 0.01,
-              ),
-              itemCount: 1,
-              itemBuilder: (context, index) {
-                return FavoriteAnimeCard(
-                  title: favoriteAnime.title,
-                  genre: favoriteAnime.genre,
-                  rating: favoriteAnime.rating,
-                  imagePath: favoriteAnime.imagePath,
-                );
-              },
-            ),
-          ),
-        ],
+      body: ListView.builder(
+        padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
+        itemCount: DummyData.animeList.length,
+        itemBuilder: (context, index) {
+          final anime = DummyData.animeList[index];
+          return FavoriteAnimeCard(
+            title: anime.title,
+            genre: anime.genre,
+            rating: anime.rating,
+            imagePath: anime.imagePath,
+          );
+        },
       ),
     );
   }

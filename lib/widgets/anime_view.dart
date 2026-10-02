@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../data/dummy_data.dart';
 import 'anime_card.dart';
 
@@ -15,6 +16,7 @@ class AnimeView extends StatelessWidget {
         builder: (context, constraints) {
           int crossAxisCount;
           double childAspectRatio;
+
           if (constraints.maxWidth < 600) {
             crossAxisCount = 3;
             childAspectRatio = 0.55;
@@ -22,10 +24,10 @@ class AnimeView extends StatelessWidget {
             crossAxisCount = 5;
             childAspectRatio = 0.6;
           } else {
-            crossAxisCount = (constraints.maxWidth /
-                200).floor().clamp(4, 6);
+            crossAxisCount = (constraints.maxWidth / 200).floor().clamp(4, 6);
             childAspectRatio = 0.8;
           }
+
           return GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
