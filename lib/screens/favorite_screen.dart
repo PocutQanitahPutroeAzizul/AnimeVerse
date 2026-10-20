@@ -1,6 +1,6 @@
-import 'package:anime/data/dummy_data.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import '../providers/app_state_provider.dart';
 import '../widgets/app_scaffold.dart';
 import '../widgets/favorite_anime_card.dart';
 
@@ -26,18 +26,52 @@ class FavoriteScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
-        itemCount: DummyData.animeList.length,
-        itemBuilder: (context, index) {
-          final anime = DummyData.animeList[index];
-          return FavoriteAnimeCard(
-            title: anime.title,
-            genre: anime.genre,
-            rating: anime.rating,
-            imagePath: anime.imagePath,
-          );
-        },
+      body: Column(
+        children: [
+          SizedBox(height: screenHeight * 0.01),
+          Expanded(
+            child: Consumer<AppStateProvider>(
+              builder: (context, favoriteProvider, child) {
+                final favorites = favoriteProvider.favorites;
+
+                if (favorites.isEmpty) {
+                  return const Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.favorite_border,
+                          size: 64,
+                          color: Colors.white70,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Belum ada anime favorit',
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                return ListView.builder(
+                  padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
+                  itemCount: favorites.length,
+                  itemBuilder: (context, index) {
+                    final anime = favorites[index];
+                    return FavoriteAnimeCard(
+                      id: anime.id,
+                      title: anime.title,
+                      genre: anime.genre,
+                      rating: anime.rating,
+                      imagePath: anime.imagePath,
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
