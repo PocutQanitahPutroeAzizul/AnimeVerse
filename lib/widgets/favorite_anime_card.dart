@@ -39,7 +39,7 @@ class FavoriteAnimeCard extends StatelessWidget {
         color: const Color(0xFF0b395e),
         elevation: 5,
         child: Padding(
-          padding: EdgeInsets.all(screenWidth * 0.025),
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
               ClipRRect(

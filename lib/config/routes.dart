@@ -13,16 +13,16 @@ class AppRoutes {
   static const String signIn = '/sign-in';
   static const String signUp = '/sign-up';
   static const String home = '/home';
-  static const String details = '/details';
   static const String favorites = '/favorites';
   static const String profile = '/profile';
+  static const String details = '/details';
 }
 
-final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 GoRouter createRouter() {
   return GoRouter(
-    navigatorKey: rootNavigatorKey,
+    navigatorKey: _rootNavigatorKey,
     initialLocation: AppRoutes.signIn,
     routes: [
       GoRoute(
@@ -47,7 +47,7 @@ GoRouter createRouter() {
       ),
 
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell){
+        builder: (context, state, navigationShell) {
           return BottomNavigationShell(navigationShell: navigationShell);
         },
         branches: [
